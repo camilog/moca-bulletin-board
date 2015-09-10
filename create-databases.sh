@@ -31,3 +31,9 @@ curl -X PUT http://localhost:5984/election_result
 
 # Create user:admin pass:admin
 curl -X PUT http://localhost:5984/_config/admins/admin -d '"admin"'
+
+
+# Create views
+
+# Create view to retrieve the ballots associated with a voter id
+curl -X PUT http://localhost:5984/ballots/_design/query/ -d '{"language":"javascript", "views": { "ballot": { "map" : "function(doc) {\n emit(doc.voter_id, doc.encrypted_vote);\n}"}}}'
