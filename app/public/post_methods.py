@@ -20,8 +20,8 @@ def create_candidates():
 
 @application.route('/api/dummy_share_key', methods=['POST'])
 def create_dummy_share_key():
-    if not request.json:
-        return '', 400
+    if not request.json or not all(key in request.json for key in ('n', 'l', 'w', 'v', 'i', 'si', 'vi')):
+        return 'Bad Request: One or more attributes missing', 400
 
     n = request.json['n']
     l = request.json['l']

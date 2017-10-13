@@ -1,4 +1,5 @@
 from app import db
+from sqlalchemy import BIGINT
 
 
 class DummyShareKey(db.Model):
@@ -10,7 +11,7 @@ class DummyShareKey(db.Model):
     v = db.Column(db.BigInteger)
     si = db.Column(db.BigInteger)
     i = db.Column(db.BigInteger)
-    vi = db.Column(db.ARRAY)
+    vi = db.Column(db.ARRAY(item_type=BIGINT))
 
     def __init__(self, n, l, w, v, si, i, vi):
         self.n = n
