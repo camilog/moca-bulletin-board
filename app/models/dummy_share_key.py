@@ -5,13 +5,13 @@ from sqlalchemy import BIGINT
 class DummyShareKey(db.Model):
     __tablename__ = "dummy_share_key"
     id = db.Column(db.Integer, primary_key=True)
-    n = db.Column(db.BigInteger)
-    l = db.Column(db.BigInteger)
-    w = db.Column(db.BigInteger)
-    v = db.Column(db.BigInteger)
-    si = db.Column(db.BigInteger)
-    i = db.Column(db.BigInteger)
-    vi = db.Column(db.ARRAY(item_type=BIGINT))
+    n = db.Column(db.String)
+    l = db.Column(db.Integer)
+    w = db.Column(db.Integer)
+    v = db.Column(db.String)
+    si = db.Column(db.String)
+    i = db.Column(db.String)
+    vi = db.Column(db.ARRAY(item_type=db.String))
 
     def __init__(self, n, l, w, v, si, i, vi):
         self.n = n
@@ -21,3 +21,16 @@ class DummyShareKey(db.Model):
         self. si = si
         self.i = i
         self.vi = vi
+
+    @property
+    def serialize(self):
+        return {
+            "id": self.id,
+            "n": self.n,
+            "l": self.l,
+            "w": self.w,
+            "v": self.v,
+            "si": self.si,
+            "i": self.i,
+            "vi": self.vi
+        }
