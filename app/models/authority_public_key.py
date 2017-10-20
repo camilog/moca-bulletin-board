@@ -12,3 +12,12 @@ class AuthorityPublicKey(db.Model):
         self.n = n
         self.threshold = threshold
         self.nsplusone = nsplusone
+
+    @property
+    def serialize(self):
+        return {
+            "id": self.id,
+            "n": self.n,
+            "threshold": self.threshold,
+            "nsplusone": self.nsplusone
+        }

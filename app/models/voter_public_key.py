@@ -10,3 +10,11 @@ class VoterPublicKey(db.Model):
     def __init__(self, voter_id, value):
         self.voter_id = voter_id
         self.value = value
+
+    @property
+    def serialize(self):
+        return {
+            "id": self.id,
+            "voter_id": self.voter_id,
+            "value": self.value
+        }

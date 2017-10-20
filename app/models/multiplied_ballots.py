@@ -8,3 +8,10 @@ class MultipliedBallots(db.Model):
 
     def __init__(self, value):
         self.value = value
+
+    @property
+    def serialize(self):
+        return {
+            "id": self.id,
+            "value": self.value
+        }

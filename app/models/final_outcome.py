@@ -10,3 +10,11 @@ class FinalOutcome(db.Model):
     def __init__(self, candidate_id, votes):
         self.candidate_id = candidate_id
         self.votes = votes
+
+    @property
+    def serialize(self):
+        return {
+            "id": self.id,
+            "candidate_id": self.candidate_id,
+            "votes": self.votes
+        }

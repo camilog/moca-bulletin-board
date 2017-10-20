@@ -11,3 +11,12 @@ class Election(db.Model):
     def __init__(self, question, number_of_candidates):
         self.question = question
         self.number_of_candidates = number_of_candidates
+
+    @property
+    def serialize(self):
+        return {
+            "id": self.id,
+            "question": self.question,
+            "number_of_candidates": self.number_of_candidates,
+            "candidates": self.candidates
+        }

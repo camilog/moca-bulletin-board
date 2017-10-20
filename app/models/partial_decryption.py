@@ -10,3 +10,11 @@ class PartialDecryption(db.Model):
     def __init__(self, auth_id, value):
         self.auth_id = auth_id
         self.value = value
+
+    @property
+    def serialize(self):
+        return {
+            "id": self.id,
+            "auth_id": self.auth_id,
+            "value": self.value
+        }
